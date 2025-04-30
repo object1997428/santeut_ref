@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "958267553059",
+    "project_id": "santeut-ec5e6",
+    "storage_bucket": "santeut-ec5e6.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:958267553059:android:5c4566a2d36ee332f38896",
+        "android_client_info": {
+          "package_name": "com.santeut"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDtdm65VPSqYzrrPzTP9f9cwuVbBQ7hB2c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
