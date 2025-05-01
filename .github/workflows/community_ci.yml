@@ -39,14 +39,17 @@ jobs:
           ${{ runner.os }}-gradle-
     
     - name: Grant Execute Permission For Gradlew
-      run: chmod +x community/gradlew
+      run: chmod +x gradlew
+      working-directory: community
 
     - name: Build With Gradle
-      run: ./community/gradlew build -x test
+      run: ./gradlew build -x test
+      working-directory: community
       
     # build Test
     - name: 테스트 코드 실행
-      run: ./community/gradlew --info test
+      run: ./gradlew --info test
+      working-directory: community
 
     - name: Publish Unit Test Results
       uses: EnricoMi/publish-unit-test-result-action@v1
