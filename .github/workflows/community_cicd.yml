@@ -75,13 +75,13 @@ jobs:
       uses: appleboy/ssh-action@master
       env:
         APP: "santeut"
-        COMPOSE: "/home/ec2-user/santeut/compose/docker-compose.yml"
+        COMPOSE: "/home/ec2-user/santeut/docker-compose.yml"
       with:
         username: ec2-user
         host: ${{ secrets.EC2_HOST }}
         key: ${{ secrets.EC2_PRIVATE_KEY }}
         envs: APP, COMPOSE
-        script_stop: true
+        #script_stop: true
         script: |
           sudo docker-compose -f $COMPOSE down
           sudo docker pull ${{ secrets.DOCKER_REPO }}/${{ secrets.DOCKER_REPO }}
