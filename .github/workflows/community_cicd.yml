@@ -71,7 +71,6 @@ jobs:
     #     docker build -t ${{ secrets.DOCKER_ID }}/${{ secrets.DOCKER_REPO }}:community ./community
     #     docker push ${{ secrets.DOCKER_ID }}/${{ secrets.DOCKER_REPO }}:community
 
-      
     - name: Deploy Images with Docker compose
       uses: appleboy/ssh-action@master
       env:
