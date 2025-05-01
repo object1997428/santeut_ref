@@ -70,7 +70,8 @@ jobs:
         docker login -u ${{ secrets.DOCKER_ID }} -p ${{ secrets.DOCKER_PASSWORD }}
         docker build -t ${{ secrets.DOCKER_ID }}/${{ secrets.DOCKER_REPO }}:community .
         docker push ${{ secrets.DOCKER_ID }}/${{ secrets.DOCKER_REPO }}:community
-         
+      working-directory: /home/ec2-user/santeut/backend/community
+      
     - name: Deploy Images with Docker compose
       uses: appleboy/ssh-action@master
       env:
