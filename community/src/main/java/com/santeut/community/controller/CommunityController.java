@@ -12,4 +12,9 @@ public class CommunityController {
     public String home() {
         return "I'm Community Server!";
     }
+
+    @GetMapping("/ci_test")
+    public String test() {
+        return "I'm Community Server! for Test";
+    }
 }
