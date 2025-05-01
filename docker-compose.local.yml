@@ -1,0 +1,77 @@
+version: '3'
+
+networks:
+    santeut-network: {}
+
+services:
+    nginx-service:
+        build:
+            context: .
+            dockerfile: nginx/Dockerfile
+        image: object1997/santeut:nginx
+        container_name: nginx-service
+        ports:
+            - "80:80"
+        networks:
+            - santeut-network
+        depends_on:
+            - community-service
+            - hiking-service
+    community-service:
+        build:
+            context: ./community
+            dockerfile: Dockerfile
+        image: object1997/santeut:community
+        container_name: community-service
+        ports:
+            - "8080:8080"
+        networks:
+            - santeut-network
+        depends_on:
+            - community-mysql
+            - community-redis
+
+    hiking-service:
+        build:
+            context: ./hiking
+            dockerfile: Dockerfile
+        image: object1997/santeut:hiking
+        container_name: hiking-service
+        ports:
+            - "8081:8080"
+        networks:
+            - santeut-network
+        depends_on:
+            - hiking-redis
+
+    
+    # DB
+    community-mysql:
+        image: mysql:latest
+        ports:
+            - "33690:33690"
+        environment:
+            MYSQL_ROOT_PASSWORD: '3965'
+            TZ: 'Asia/Seoul'
+        volumes:
+            - ./mysql/conf.d:/etc/mysql/conf.d
+        command:
+            - "mysqld"
+            - "--character-set-server=utf8mb4"
+            - "--collation-server=utf8mb4_unicode_ci"
+        networks:
+            - santeut-network
+    community-redis:
+        image: redis:latest
+        ports:
+            - "33691:33691"
+        restart: always
+        networks:
+            - santeut-network
+    hiking-redis:
+        image: redis:latest
+        ports:
+        - "33692:33692"
+        restart: always
+        networks:
+            - santeut-network
