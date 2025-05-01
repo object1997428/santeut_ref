@@ -15,6 +15,6 @@ public class CommunityController {
 
     @GetMapping("/ci_test")
     public String test() {
-        return "I'm Community Server! for Test12";
+        return "I'm Community Server! for Test123";
     }
 }
