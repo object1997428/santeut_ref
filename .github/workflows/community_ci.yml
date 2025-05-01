@@ -1,13 +1,17 @@
 # Workflow 이름은 구별이 가능할 정도로 자유롭게 적어주어도 된다. 
 # 필수 옵션은 아니다.
-name: CI with Gradle
+name: Community CI with Gradle
 
 # main 브랜치에 PR 이벤트가 발생하면 Workflow가 실행된다.
 # 브랜치 구분이 없으면 on: [pull_request]로 해주어도 된다.
 on:
   push:
+    paths:
+      - 'community/**'
     branches: [ "main" ]
   pull_request:
+    paths:
+        - 'community/**'
     branches: [ "main" ]
 
 # 테스트 결과 작성을 위해 쓰기권한 추가
