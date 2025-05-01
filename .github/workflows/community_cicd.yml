@@ -6,8 +6,8 @@ name: Community CICD with Gradle
 # 브랜치 구분이 없으면 on: [pull_request]로 해주어도 된다.
 on:
   push:
-    paths:
-      - 'community/**'
+    # paths:
+    #   - 'community/**'
     branches: [ "main" ]
   pull_request:
     paths:
