@@ -6,8 +6,8 @@ name: Community CICD with Gradle
 # 브랜치 구분이 없으면 on: [pull_request]로 해주어도 된다.
 on:
   push:
-    paths:
-      - 'community/**'
+    # paths:
+    #   - 'community/**'
     branches: [ "main" ]
   pull_request:
     paths:
@@ -77,7 +77,7 @@ jobs:
         APP: "santeut"
         COMPOSE: "/home/ec2-user/santeut/compose/docker-compose.yml"
       with:
-        username: ubuntu
+        username: ec2-user
         host: ${{ secrets.EC2_HOST }}
         key: ${{ secrets.EC2_PRIVATE_KEY }}
         envs: APP, COMPOSE
