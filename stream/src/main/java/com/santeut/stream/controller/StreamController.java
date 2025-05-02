@@ -10,11 +10,7 @@ public class StreamController {
 
     @GetMapping("/")
     public String hello(){
-        return "I'm Stream Server12";
+        return "I'm Stream Server";
     }
 
-    @GetMapping("/hello")
-    public String test(){
-        return "I'm Stream Server12";
-    }
 }
