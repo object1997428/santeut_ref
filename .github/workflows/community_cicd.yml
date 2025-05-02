@@ -1,14 +1,14 @@
 name: Community CICD
 
 on:
-  # push:
-  #   paths:
-  #     - 'community/**'
-  #   branches: [ "main" ]
+  push:
+    paths:
+      - 'community/**'
+    branches: [ "main" ]
   pull_request:
     paths:
         - 'community/**'
-    branches: [ "main" ]
+    branches: [ "main","community" ]
 
 
 # 테스트 결과 작성을 위해 쓰기권한 추가
