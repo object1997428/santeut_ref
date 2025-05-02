@@ -10,6 +10,6 @@ public class HikingController {
 
     @GetMapping("/")
     public String home() {
-        return "I'm Hiking Server!!!";
+        return "I'm Hiking Server!!!!";
     }
 }
