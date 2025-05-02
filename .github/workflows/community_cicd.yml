@@ -4,7 +4,7 @@ on:
   push:
     paths:
       - 'community/**'
-    branches: [ "main" ]
+    branches: [ "main","community" ]
   pull_request:
     paths:
         - 'community/**'
