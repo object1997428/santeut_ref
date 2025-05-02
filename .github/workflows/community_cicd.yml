@@ -35,6 +35,12 @@ jobs:
         key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
         restore-keys: |
           ${{ runner.os }}-gradle-
+
+    - name: Set DB Environment Variables
+      run: |
+        echo "DB_URL=${{ secrets.COMMUNITY_MYSQL_DB_URL }}" >> $GITHUB_ENV
+        echo "DB_USERNAME=${{ secrets.COMMUNITY_MYSQL_DB_USERNAME }}" >> $GITHUB_ENV
+        echo "DB_PASSWORD=${{ secrets.COMMUNITY_MYSQL_DB_PASSWORD }}" >> $GITHUB_ENV
     
     - name: Grant Execute Permission For Gradlew
       run: chmod +x gradlew
