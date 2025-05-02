@@ -11,11 +11,11 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 public class CommunityController {
 
-    private UserService userService;
+    private final UserService userService;
 
     @GetMapping("/")
     public String home() {
-
+        userService.userInfo(1);
         return "I'm Community Server!!!";
     }
 

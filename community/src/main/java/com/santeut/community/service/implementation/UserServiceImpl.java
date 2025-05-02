@@ -16,4 +16,9 @@ public class UserServiceImpl implements UserService {
 
     private final UserRepository userRepository;
 
+    @Override
+    public void userInfo(int userId) {
+        Optional<User> user=userRepository.findByUserId(userId);
+        log.info("user info: {}",user);
+    }
 }
