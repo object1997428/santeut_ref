@@ -1,13 +1,13 @@
-package com.santeut.processor;
+package com.santeut.stream;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class ProcessorApplication {
+public class StreamApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(ProcessorApplication.class, args);
+		SpringApplication.run(StreamApplication.class, args);
 	}
 
 }
