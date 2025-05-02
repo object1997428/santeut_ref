@@ -10,7 +10,7 @@ public class CommunityController {
 
     @GetMapping("/")
     public String home() {
-        return "I'm Community Server!!";
+        return "I'm Community Server!!!";
     }
-    
+
 }
