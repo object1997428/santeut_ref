@@ -94,5 +94,6 @@ jobs:
         script: |
           docker login -u ${{ secrets.DOCKER_ID }} -p ${{ secrets.DOCKER_PASSWORD }}
           sudo docker-compose -f $COMPOSE down
-          sudo docker pull ${{ secrets.DOCKER_ID }}/${{ secrets.DOCKER_REPO }}
+          sudo docker pull ${{ secrets.DOCKER_ID }}/${{ secrets.DOCKER_REPO }}:stream
+          sudo docker-compose build --no-cache
           sudo docker-compose -f $COMPOSE up -d
