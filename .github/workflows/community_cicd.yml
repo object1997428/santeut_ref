@@ -18,8 +18,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
-
+    
     #CI
+    - name: Set application.properties
+      run: |
+        touch ./src/main/resources/application-env.properties
+        echo "${{ secrets.COMMUNITY_APPLICATION }}" > ./src/main/resources/application-env.properties
+        cat ./src/main/resources/application-env.properties
+
     - name: Set up JDK 17
       uses: actions/setup-java@v3
       with:
@@ -83,5 +89,4 @@ jobs:
           docker login -u ${{ secrets.DOCKER_ID }} -p ${{ secrets.DOCKER_PASSWORD }}
           sudo docker-compose -f $COMPOSE stop community-service
           sudo docker pull ${{ secrets.DOCKER_ID }}/${{ secrets.DOCKER_REPO }}:community
-          sudo docker-compose build --no-cache
           sudo docker-compose -f $COMPOSE up -d community-service
