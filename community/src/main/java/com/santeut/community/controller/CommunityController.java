@@ -24,7 +24,7 @@ public class CommunityController {
     @GetMapping("/redis")
     public String redis_test() {
         guildService.redisTest();
-        return "Redis Test!";
+        return "Redis Test!!";
     }
 
 }
