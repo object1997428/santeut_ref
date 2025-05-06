@@ -21,4 +21,5 @@ public class UserServiceImpl implements UserService {
         Optional<User> user=userRepository.findByUserId(userId);
         log.info("user info: {}",user);
     }
+
 }
