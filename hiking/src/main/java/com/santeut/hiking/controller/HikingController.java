@@ -20,6 +20,6 @@ public class HikingController {
     @GetMapping("/redis")
     public String test() {
         hikingService.redisTest();
-        return "Redis Test!!";
+        return "Redis Test!!!";
     }
 }
