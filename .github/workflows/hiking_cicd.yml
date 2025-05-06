@@ -20,6 +20,12 @@ jobs:
     - uses: actions/checkout@v3
 
     #CI
+    - name: Set application.properties
+      run: |
+        touch ./hiking/src/main/resources/application-env.properties
+        echo "${{ secrets.HIKING_APPLICATION }}" > ./hiking/src/main/resources/application-env.properties
+        cat ./hiking/src/main/resources/application-env.properties
+        
     - name: Set up JDK 17
       uses: actions/setup-java@v3
       with:
