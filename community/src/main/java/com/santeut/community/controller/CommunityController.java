@@ -21,10 +21,6 @@ public class CommunityController {
         return "I'm Community Server!!!";
     }
 
-    @GetMapping("/redis")
-    public String redis_test() {
-        guildService.redisTest();
-        return "Redis Test!!";
-    }
+
 
 }
