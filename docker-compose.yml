@@ -1,0 +1,36 @@
+version: '3'
+
+networks:
+    santeut-network: {}
+
+services:
+    # DB
+    community-mysql:
+        image: mysql:8.0
+        ports:
+            - "33690:3306"
+        environment:
+            MYSQL_ROOT_PASSWORD: '3965'
+            TZ: 'Asia/Seoul'
+        volumes:
+            - ./mysql/conf.d:/etc/mysql/conf.d
+        command:
+            - "mysqld"
+            - "--character-set-server=utf8mb4"
+            - "--collation-server=utf8mb4_unicode_ci"
+        networks:
+            - santeut-network
+    community-redis:
+        image: redis:latest
+        ports:
+            - "33691:33691"
+        restart: always
+        networks:
+            - santeut-network
+    hiking-redis:
+        image: redis:latest
+        ports:
+        - "33692:33692"
+        restart: always
+        networks:
+            - santeut-network
