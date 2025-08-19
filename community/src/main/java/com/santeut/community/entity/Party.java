@@ -109,6 +109,11 @@ public class Party extends BaseEntity {
         }
 
         /** 비즈니스 로직 **/
+        public boolean canPartyStart(){
+            return !this.started_at.isAfter(LocalDateTime.now());
+        }
+
+
         public void setPartyStatus(char status){
             if(status=='P'){
                 this.started_at=LocalDateTime.now();
