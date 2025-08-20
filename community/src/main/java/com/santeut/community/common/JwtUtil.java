@@ -87,4 +87,8 @@ public class JwtUtil {
         return getClaimFromToken(jwtString, claims -> claims.get("user_profile",String.class));
     }
 
+    public Date getExpireDate(String jwtString){
+        return getClaimFromToken(jwtString, Claims::getExpiration);
+    }
+
 }

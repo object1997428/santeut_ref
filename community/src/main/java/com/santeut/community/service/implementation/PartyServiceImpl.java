@@ -31,9 +31,14 @@ public class PartyServiceImpl implements PartyService {
             PartyUser partyUser = partyUserRepository.findByPartyIdAndUserId(partyId, userId).orElseThrow(() -> new RuntimeException("User is not exist in Party"));
 
             if (validateParty(party, userId)) {
+                //파티가 B면 활성화
+                if(party.getStatus()=='B') party.setPartyStatus('P');
+
                 //토큰 발급
                 return getJwtToken(partyId, userId, user, partyUser);
             } else throw new RuntimeException("Party is not validate");
+        } catch (RuntimeException e){
+            throw e;
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
@@ -47,7 +52,7 @@ public class PartyServiceImpl implements PartyService {
         claims.put("user_party_id", partyUser.getPartyUserId());
         claims.put("user_profile", user.getUserProfile());
 
-        return jwtUtil.createToken(60000, claims);
+        return jwtUtil.createToken(60000, claims); //1분
     }
 
     private static boolean validateParty(Party party, Integer userId) {

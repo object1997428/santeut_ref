@@ -32,21 +32,25 @@ class JwtUtilTest {
 
     @Test
     void 토큰_생성하기() {
+        //given
         var claims = new HashMap<String, Object>();
         claims.put("user_id", 1);
         claims.put("user_nickname","object1997");
         claims.put("party_id",3);
         claims.put("user_party_id",5);
         claims.put("user_profile","abc");
-        String jwtTokenString = jwtUtil.createToken(60000, claims);
 
+        //when
+        String jwtTokenString = jwtUtil.createToken(60000, claims);
         log.info("jwtTokenString = {}",jwtTokenString);
 
+        //then
         assertThat(jwtUtil.getUserId(jwtTokenString)).isEqualTo(1);
         assertThat(jwtUtil.getPartyId(jwtTokenString)).isEqualTo(3);
         assertThat(jwtUtil.getPartyUserId(jwtTokenString)).isEqualTo(5);
         assertThat(jwtUtil.getUserNickname(jwtTokenString)).isEqualTo("object1997");
         assertThat(jwtUtil.getUserProfile(jwtTokenString)).isEqualTo("abc");
+        assertThat(jwtUtil.getExpireDate(jwtTokenString).after(new Date()));
     }
 
     @Test

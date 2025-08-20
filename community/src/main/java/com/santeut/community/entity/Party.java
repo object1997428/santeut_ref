@@ -2,10 +2,7 @@ package com.santeut.community.entity;
 
 import com.santeut.community.dto.CreatePartyRequestDto;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -110,7 +107,7 @@ public class Party extends BaseEntity {
 
         /** 비즈니스 로직 **/
         public boolean canPartyStart(){
-            return !this.started_at.isAfter(LocalDateTime.now());
+            return !this.schedule.isAfter(LocalDateTime.now());
         }
 
 
@@ -123,4 +120,5 @@ public class Party extends BaseEntity {
             }
             this.status=status;
         }
+
     }
