@@ -87,8 +87,6 @@ class JwtUtilTest {
          * 상황: 잘못된 ISSUER로 서명된 토큰을 검증하려고 할때
          * 기대결과: 검증실패, RuntimeException 예외 발생
          */
-
-
         var claims = new HashMap<String, Object>();
         claims.put("user_id", 1);
         claims.put("user_nickname","object1997");
