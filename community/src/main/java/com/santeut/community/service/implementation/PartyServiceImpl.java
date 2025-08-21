@@ -1,6 +1,7 @@
 package com.santeut.community.service.implementation;
 
 import com.santeut.community.common.JwtUtil;
+import com.santeut.community.dto.PartyEnterResponseDto;
 import com.santeut.community.entity.Party;
 import com.santeut.community.entity.PartyUser;
 import com.santeut.community.entity.User;
@@ -24,7 +25,7 @@ public class PartyServiceImpl implements PartyService {
     final private PartyUserRepository partyUserRepository;
     final private JwtUtil jwtUtil;
 
-    public String enterParty(int partyId, int userId) {
+    public PartyEnterResponseDto enterParty(int partyId, int userId) {
         try {
             Party party = partyRepository.findByPartyId(partyId).orElseThrow(() -> new RuntimeException("Party is not exist"));
             User user = userRepository.findByUserId(userId).orElseThrow(() -> new RuntimeException("User is not exist"));
@@ -35,7 +36,7 @@ public class PartyServiceImpl implements PartyService {
                 if(party.getStatus()=='B') party.setPartyStatus('P');
 
                 //토큰 발급
-                return getJwtToken(partyId, userId, user, partyUser);
+                return new PartyEnterResponseDto(getJwtToken(partyId, userId, user, partyUser));
             } else throw new RuntimeException("Party is not validate");
         } catch (RuntimeException e){
             throw e;

@@ -1,5 +1,7 @@
 package com.santeut.community.service;
 
+import com.santeut.community.dto.PartyEnterResponseDto;
+
 public interface PartyService {
-    public String enterParty(int partyId, int userId);
+    public PartyEnterResponseDto enterParty(int partyId, int userId);
 }

@@ -68,7 +68,7 @@ class PartyServiceImplTest {
         when(jwtUtil.createToken(60000, claims)).thenReturn("test-jwt-token");
 
         //when
-        String jwtToken = partyService.enterParty(partyId, userId);
+        String jwtToken = partyService.enterParty(partyId, userId).getAccessToken();
 
         //then
         assertEquals("test-jwt-token", jwtToken);
@@ -128,7 +128,7 @@ class PartyServiceImplTest {
         when(jwtUtil.createToken(60000, claims)).thenReturn("test-jwt-token");
 
         //when
-        String jwtToken = partyService.enterParty(partyId, userId);
+        String jwtToken = partyService.enterParty(partyId, userId).getAccessToken();
 
         //then
         assertEquals("test-jwt-token", jwtToken);
